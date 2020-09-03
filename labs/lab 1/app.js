@@ -1,3 +1,17 @@
+//Miguel Oivares
+//N320
+//Ground Rain
+
+//create application with classes for rain drops
+//managa class for drops
+// or array
+//Classes are to be instantiated and used to run a simulation of something that looks like rain
+
+
+//Class to create
+//manage drops of rain or makes instainces and save them in a array
+
+
 class Circle{
     constructor(cx, cy, radius, color){
         this.x = cx;
@@ -15,14 +29,36 @@ class Circle{
     }
 }
 
-var myCircle = new Circle(100, 10, 100, [166,214,222]);
-console.log(myCircle);
+//this is the ground class that will be created and updateed every cycle
+// it will collect the number of drops that are created change the blue for every 10 drops.
+
+class Ground{
+    constructor(x, y, w, h){
+        this.width = w;
+        this.height = h;
+        this.xRect = x;
+        this.yRect = y;
+        this.blue = 100;
+        this.dropCount = 20;
+    }
+
+    update(){
+        rect(this.xRect, this.yRect, this.width, this.height);
+        fill('rgb(0%,0%,'+ this. blue +'%)');
+        }
+}
+
+console.log("Current screen height is " + window.innerHeight);
+console.log("Current screen width is " + window.innerWidth)
+
+var ground = new Ground(0 , window.innerHeight * .9, window.innerWidth, window.innerHeight * .1);
+
 function setup(){
-    createCanvas(windowWidth, windowHeight);                                                                                                                                                                            
+    createCanvas(windowWidth, windowHeight);  
+
 }
 function draw() {
-    background(34, 32, 79);
-
-    myCircle.update();
+    background(34,32,79);
+    ground.update();
 
 }
