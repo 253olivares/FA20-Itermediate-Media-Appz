@@ -35,6 +35,8 @@ class Rain{
             this.y = random(0, -3000);
             this.length = random(10, 20);
             this.width = random(3, 5);
+            rainCount++;
+            console.log(rainCount);
             // this.speed = 1 + Math.random() * 2;
         }
     }
@@ -65,6 +67,8 @@ class Ground{
 
 //creating rain array to store dropplets
 var rain =[];
+//this keeps track of the number of drops that have touched the ground
+var rainCount = 0;
 var ground = new Ground(0 , window.innerHeight * .9, window.innerWidth, window.innerHeight * .1);
 
 
@@ -95,4 +99,5 @@ function draw() {
     fill(255,255,255);
     textSize(32);
     text("Ground Rain Lab 1", 10, 40);
+    text(rainCount, 10, 100);
 }
