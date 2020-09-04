@@ -69,7 +69,7 @@ class Ground{
             textAlign(CENTER, CENTER);
             fill(255,255,255);
             textSize(40);
-            text("Grass fully fertilized", window.innerWidth *.5, window.innerHeight * .95);
+            text("Grass fully watered", window.innerWidth *.5, window.innerHeight * .95);
             textAlign(LEFT,BASELINE);
         }
         // if (rainCount > 0){
