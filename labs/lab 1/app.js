@@ -13,7 +13,7 @@
 
 
 class Rain{
-    constructor(rx, ry, color){
+    constructor(rx, ry){
         this.x = rx;
         this.y = ry;
         this.length = random(10, 20);
@@ -85,7 +85,7 @@ class Ground{
 // console.log("Current screen width is " + window.innerWidth)
 
 //creating rain array to store dropplets
-var rain =[];
+var rain = [];
 //this keeps track of the number of drops that have touched the ground
 var rainCount = 0;
 var rectGreen = 5;
