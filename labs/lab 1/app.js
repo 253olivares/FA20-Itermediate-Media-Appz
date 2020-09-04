@@ -99,8 +99,23 @@ function setup(){
     //it appears to be falling all at random moments instead of all the rain spawning at once and just falling
     for (i = 0; i < 200; i++) {
         rain[i] = new Rain(random(50,window.innerWidth - 50), random(0, -3000));
-      }    // console.log("This is the rain array that is created     " + rain + "     all this rain exists outside of canvas at start");
-
+      } 
+    // console.log("This is the rain array that is created     " + rain + "     all this rain exists outside of canvas at start");
+    
+    //This is all just code to create a button and remove its css so that I can put a gon back link to the main page
+    //will have more of these in later labs
+    let button = createButton('Go Back');
+    button.position(10, 70);
+    button.style('font-size', '25px');
+    button.style('background', 'none');
+    button.style('border','none');
+    button.style('color','white');
+    button.style('cursor','pointer');
+    button.mouseClicked(goBack);
+    //this is just to link back to main page
+    function goBack(){
+        window.open('../../index.html', '_self');
+    }
 
 }
 
@@ -115,9 +130,13 @@ function draw() {
       }
     fill(102, 102, 102);
     rect(0,0,290,60);
+    rect(0,60,125,50);
     triangle(290,0,325,0,290,60 );
+    triangle(125,60,160,60,125,110 );
     fill(255,255,255);
     textSize(32);
     text("Ground Rain Lab 1", 10, 40);
-    text(rainCount, 10, 100);
+    // textSize(25);
+    // text("Go Back", 10, 90);
+    text(rainCount, 10, 155);
 }
