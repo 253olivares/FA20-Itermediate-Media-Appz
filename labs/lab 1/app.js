@@ -12,6 +12,7 @@
 //manage drops of rain or makes instainces and save them in a array
 
 
+//rain class blueprint for the rains information x and y location its lendth of the epilse and the width and color
 class Rain{
     constructor(rx, ry){
         this.x = rx;
@@ -26,12 +27,13 @@ class Rain{
         noStroke();
         fill(this.color);
         ellipse(this.x, this.y, this.width, this.length);
+        //set 2 6 just because I like this speed
         this.y = this.y + 6;
         // this.y = this.y + this.speed;
         // this.speed = this.speed + .1;
         // this.y++
         if (this.y > window.innerHeight * .925){
-            //sends rain drop back above off screen with reset values
+            //sends rain drop back above off screen with reset values with new random ones to create new rain droplets that are diffrent from the initial ones that were created
             this.y = random(0, -3000);
             this.length = random(10, 20);
             this.width = random(3, 5);
@@ -62,6 +64,7 @@ class Ground{
     update(){
         fill('rgb(0%,'+ rectGreen +'%, 0%)');
         rect(this.xRect, this.yRect, this.width, this.height);
+        //this was created just to send a message back of when the gounds green value has been completed
         if (rectGreen > 100){
             textAlign(CENTER, CENTER);
             fill(255,255,255);
