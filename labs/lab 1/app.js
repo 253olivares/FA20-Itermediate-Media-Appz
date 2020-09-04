@@ -12,11 +12,12 @@
 //manage drops of rain or makes instainces and save them in a array
 
 
-class Circle{
-    constructor(cx, cy, radius, color){
-        this.x = cx;
-        this.y = cy;
-        this.radius = radius;
+class Rain{
+    constructor(rx, ry, radius, color){
+        this.x = rx;
+        this.y = ry;
+        this.length = 15;
+        this.radius = 0;
         this.color = color;
         this.speed = 1 + Math.random() * 2;
     }
@@ -38,7 +39,7 @@ class Ground{
         this.height = h;
         this.xRect = x;
         this.yRect = y;
-        this.blue = 100;
+        this.blue = 5;
         this.dropCount = 20;
     }
 
@@ -53,12 +54,13 @@ console.log("Current screen width is " + window.innerWidth)
 
 var ground = new Ground(0 , window.innerHeight * .9, window.innerWidth, window.innerHeight * .1);
 
+
 function setup(){
     createCanvas(windowWidth, windowHeight);  
 
 }
 function draw() {
-    background(34,32,79);
+    background(208, 211, 212);
     ground.update();
-
+    ellipse(30, 30, 3, 15);
 }
