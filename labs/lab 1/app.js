@@ -36,7 +36,13 @@ class Rain{
             this.length = random(10, 20);
             this.width = random(3, 5);
             rainCount++;
-            console.log(rainCount);
+            //orginally located in ground update but moved here when noticed that color would change furing mulitple frames if the counter did not change
+            //now that its moved here it will only change when the coounter goes up so it would only change the color once
+            if (rainCount % 10 == 0){
+                rectGreen = rectGreen + 5;
+                console.log(rectGreen);
+            }
+            // console.log(rainCount);
             // this.speed = 1 + Math.random() * 2;
         }
     }
@@ -51,13 +57,26 @@ class Ground{
         this.height = h;
         this.xRect = x;
         this.yRect = y;
-        this.blue = 5;
-        this.dropCount = 20;
     }
 
     update(){
-        fill('rgb(0%,0%,'+ this.blue +'%)');
+        fill('rgb(0%,'+ rectGreen +'%, 0%)');
         rect(this.xRect, this.yRect, this.width, this.height);
+        if (rectGreen > 100){
+            textAlign(CENTER, CENTER);
+            fill(255,255,255);
+            textSize(40);
+            text("Grass fully fertilized", window.innerWidth *.5, window.innerHeight * .95);
+            textAlign(LEFT,BASELINE);
+        }
+        // if (rainCount > 0){
+        //     console.log("working");
+        //     if(rainCount % 100 == 0){
+        //         this.green = this.green + 5;
+        //         console.log(this.green);
+        //     }
+        // }
+        // if (this.green == 100){}
         }
 }
 
@@ -69,6 +88,7 @@ class Ground{
 var rain =[];
 //this keeps track of the number of drops that have touched the ground
 var rainCount = 0;
+var rectGreen = 5;
 var ground = new Ground(0 , window.innerHeight * .9, window.innerWidth, window.innerHeight * .1);
 
 
@@ -79,8 +99,8 @@ function setup(){
     //it appears to be falling all at random moments instead of all the rain spawning at once and just falling
     for (i = 0; i < 200; i++) {
         rain[i] = new Rain(random(50,window.innerWidth - 50), random(0, -3000));
-      }
-    console.log("This is the rain array that is created     " + rain + "     all this rain exists outside of canvas at start");
+      }    // console.log("This is the rain array that is created     " + rain + "     all this rain exists outside of canvas at start");
+
 
 }
 
