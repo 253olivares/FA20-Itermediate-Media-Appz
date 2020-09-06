@@ -34,7 +34,7 @@ class Rain{
         // this.y++
         if (this.y > window.innerHeight * .925){
             //sends rain drop back above off screen with reset values with new random ones to create new rain droplets that are diffrent from the initial ones that were created
-            this.y = random(0, -4000);
+            this.y = random(0, -3000);
             this.length = random(10, 20);
             this.width = random(3, 5);
             rainCount++;
@@ -101,7 +101,7 @@ function setup(){
     //I am giving all the rain random x anmd y's out side the canvas so that 
     //it appears to be falling all at random moments instead of all the rain spawning at once and just falling
     for (i = 0; i < 200; i++) {
-        rain[i] = new Rain(random(50,window.innerWidth - 50), random(0, -3000));
+        rain[i] = new Rain(random(50,window.innerWidth - 50), random(0, -4000));
       } 
     // console.log("This is the rain array that is created     " + rain + "     all this rain exists outside of canvas at start");
     
@@ -143,3 +143,7 @@ function draw() {
     // text("Go Back", 10, 90);
     text(rainCount, 10, 155);
 }
+//this is just a function i found for P5 that will resize the update the canvas when the windows is changed
+function windowResized() { 
+    resizeCanvas(window.innerWidth, windowHeight); 
+} 
