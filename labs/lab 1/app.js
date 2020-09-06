@@ -34,7 +34,7 @@ class Rain{
         // this.y++
         if (this.y > window.innerHeight * .925){
             //sends rain drop back above off screen with reset values with new random ones to create new rain droplets that are diffrent from the initial ones that were created
-            this.y = random(0, -3000);
+            this.y = random(0, -4000);
             this.length = random(10, 20);
             this.width = random(3, 5);
             rainCount++;
