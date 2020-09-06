@@ -143,7 +143,3 @@ function draw() {
     // text("Go Back", 10, 90);
     text(rainCount, 10, 155);
 }
-//this is just a function i found for P5 that will resize the update the canvas when the windows is changed
-function windowResized() { 
-    resizeCanvas(window.innerWidth, windowHeight); 
-} 
