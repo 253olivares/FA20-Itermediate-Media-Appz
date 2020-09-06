@@ -92,6 +92,7 @@ var rain = [];
 //this keeps track of the number of drops that have touched the ground
 var rainCount = 0;
 var rectGreen = 5;
+// creates ground and positions it relative to the windows size
 var ground = new Ground(0 , window.innerHeight * .9, window.innerWidth, window.innerHeight * .1);
 
 
