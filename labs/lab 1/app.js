@@ -101,7 +101,7 @@ function setup(){
     //Creating rain and putting it in array
     //I am giving all the rain random x anmd y's out side the canvas so that 
     //it appears to be falling all at random moments instead of all the rain spawning at once and just falling
-    for (i = 0; i < 50; i++) {
+    for (i = 0; i < 50 ; i++) {
         rain[i] = new Rain(random(50,window.innerWidth - 50), random(0, -4000));
       } 
     // console.log("This is the rain array that is created     " + rain + "     all this rain exists outside of canvas at start");
