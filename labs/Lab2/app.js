@@ -56,17 +56,34 @@ class instrument{
     }
 }
 //Making Concrete classes
-class woodwind{
-
+class woodwind extends instrument{
+    constructor(l){
+        super(l,"test","test");
+    }
 }
 
-class percussion{
-
+class percussion extends instrument{
+    constructor(l){
+        super(l,"test","test");
+    }
 }
 
-class stringed{
-
+class stringed extends instrument{
+    constructor(l){
+        super(l,"test","test");
+    }
 }
 
 // testing your code
 //making isntances of each child and put in array
+let testArray = [];
+let myWoodwind = new woodwind ("Very Loud");
+let myPercussion = new percussion ("Not so Loud");
+let myStringed = new stringed ("Moderate");
+testArray[0] = myWoodwind;
+testArray[1] = myPercussion;
+testArray[2] = myStringed;
+
+testArray.forEach((test) =>{
+    test.play();
+});

@@ -53,7 +53,7 @@ class animal {
 }
  class dog extends animal {
     constructor (ac, n, c, w){
-        super(ac, n, c, w)
+        super(ac, n, c, w);
         this.species = "Cat";
     }
     bork() {
@@ -62,7 +62,7 @@ class animal {
  }
  class cat extends animal {
     constructor (ac, n, c, w){
-        super(ac, n, c, w)
+        super(ac, n, c, w);
         this.species = "Dog";
     }
     Meow() {
@@ -71,7 +71,7 @@ class animal {
  }
  class rabbits2 extends animal {
     constructor (ac, n, c, w){
-        super(ac, n, c, w)
+        super(ac, n, c, w);
         this.species = "Rabbit";
     }
     hop() {
