@@ -52,37 +52,34 @@ class instrument{
         this.playVerb = pv;
     }
     play(){
-        console.log("{{"+ this.family +"}} {{"+ this.playVerb+"}} at {{"+this.loundness+"}}");
+        console.log("{{"+ this.family +"}} {{"+ this.playVerb+"}} at {{"+this.loundness+"}} loudness");
     }
 }
 //Making Concrete classes
 class woodwind extends instrument{
     constructor(l){
-        super(l,"test","test");
+        super(l,"Woodwinds","blew");
     }
 }
 
 class percussion extends instrument{
     constructor(l){
-        super(l,"test","test");
+        super(l,"Percusion","baned");
     }
 }
 
 class stringed extends instrument{
     constructor(l){
-        super(l,"test","test");
+        super(l,"Stringed","strung");
     }
 }
 
 // testing your code
 //making isntances of each child and put in array
 let testArray = [];
-let myWoodwind = new woodwind ("Very Loud");
-let myPercussion = new percussion ("Not so Loud");
-let myStringed = new stringed ("Moderate");
-testArray[0] = myWoodwind;
-testArray[1] = myPercussion;
-testArray[2] = myStringed;
+testArray[0] = new woodwind ("Very Loud");
+testArray[1]  = new percussion ("Not so Loud");
+testArray[2] = new stringed ("Moderate");
 
 testArray.forEach((test) =>{
     test.play();
