@@ -21,3 +21,52 @@ function setup(){
     }
 
 }
+function draw(){
+    //copy pasted from previous lab to create go back link and title of this lab
+    noStroke();
+    fill(102, 102, 102);
+    rect(0,0,415,60);
+    rect(0,60,125,50);
+    triangle(415,0,450,0,415,60 );
+    triangle(125,60,160,60,125,110 );
+    fill(255,255,255);
+    textSize(32);
+    text("Inheriting Instruments Lab 2", 10, 40);
+}
+
+
+//GOAL: explore and employ object oriented principles
+//3 parts of this lab
+    //Making a base abstract class
+    //making concrete classes
+    //testing those classes
+
+//making a base class
+//creat instrument class
+console.log('Formating 4 assignment:"{{ family }} {{ verb }} at {{ loudness }}"');
+class instrument{
+    //properties required for the lab
+    constructor(l,f,pv){
+        this.loundness = l;
+        this.family = f;
+        this.playVerb = pv;
+    }
+    play(){
+        console.log("{{"+ this.family +"}} {{"+ this.playVerb+"}} at {{"+this.loundness+"}}");
+    }
+}
+//Making Concrete classes
+class woodwind{
+
+}
+
+class percussion{
+
+}
+
+class stringed{
+
+}
+
+// testing your code
+//making isntances of each child and put in array
