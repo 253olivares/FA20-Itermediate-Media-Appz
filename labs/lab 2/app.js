@@ -64,7 +64,7 @@ class woodwind extends instrument{
 
 class percussion extends instrument{
     constructor(l){
-        super(l,"Percusion","baned");
+        super(l,"Percusion","banged");
     }
 }
 
