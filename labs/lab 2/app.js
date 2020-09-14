@@ -52,7 +52,7 @@ class instrument{
         this.playVerb = pv;
     }
     play(){
-        console.log("{{"+ this.family +"}} {{"+ this.playVerb+"}} at {{"+this.loundness+"}} loudness");
+        console.log("The "+ this.family +" "+ this.playVerb +" "+ this.loundness+" loudly");
     }
 }
 //Making Concrete classes
@@ -77,9 +77,9 @@ class stringed extends instrument{
 // testing your code
 //making isntances of each child and put in array
 let testArray = [];
-testArray[0] = new woodwind ("Very Loud");
-testArray[1]  = new percussion ("Not so Loud");
-testArray[2] = new stringed ("Moderate");
+testArray[0] = new woodwind ("Very");
+testArray[1]  = new percussion ("Not so");
+testArray[2] = new stringed ("Moderatly");
 
 testArray.forEach((test) =>{
     test.play();
