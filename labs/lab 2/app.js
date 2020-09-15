@@ -2,37 +2,6 @@
 //N320
 //Inheriting Instruments
 
-//this is copy pasted from previous lab to create a return link to the main page
-function setup(){
-    createCanvas(window.innerWidth, windowHeight);  
-    //This is all just code to create a button and remove its css so that I can put a gon back link to the main page
-    //will have more of these in later labs
-    let button = createButton('Go Back');
-    button.position(10, 70);
-    button.style('font-size', '25px');
-    button.style('background', 'none');
-    button.style('border','none');
-    button.style('color','white');
-    button.style('cursor','pointer');
-    button.mouseClicked(goBack);
-    //this is just to link back to main page
-    function goBack(){
-        window.open('../../index.html', '_self');
-    }
-
-}
-function draw(){
-    //copy pasted from previous lab to create go back link and title of this lab
-    noStroke();
-    fill(102, 102, 102);
-    rect(0,0,415,60);
-    rect(0,60,125,50);
-    triangle(415,0,450,0,415,60 );
-    triangle(125,60,160,60,125,110 );
-    fill(255,255,255);
-    textSize(32);
-    text("Inheriting Instruments Lab 2", 10, 40);
-}
 
 
 //GOAL: explore and employ object oriented principles
@@ -84,3 +53,41 @@ testArray[2] = new stringed ("Moderatly");
 testArray.forEach((test) =>{
     test.play();
 });
+
+
+
+
+
+
+
+//this is copy pasted from previous lab to create a return link to the main page
+function setup(){
+    createCanvas(window.innerWidth, windowHeight);  
+    //This is all just code to create a button and remove its css so that I can put a gon back link to the main page
+    //will have more of these in later labs
+    let button = createButton('Go Back');
+    button.position(10, 70);
+    button.style('font-size', '25px');
+    button.style('background', 'none');
+    button.style('border','none');
+    button.style('color','white');
+    button.style('cursor','pointer');
+    button.mouseClicked(goBack);
+    //this is just to link back to main page
+    function goBack(){
+        window.open('../../index.html', '_self');
+    }
+
+}
+function draw(){
+    //copy pasted from previous lab to create go back link and title of this lab
+    noStroke();
+    fill(102, 102, 102);
+    rect(0,0,415,60);
+    rect(0,60,125,50);
+    triangle(415,0,450,0,415,60 );
+    triangle(125,60,160,60,125,110 );
+    fill(255,255,255);
+    textSize(32);
+    text("Inheriting Instruments Lab 2", 10, 40);
+}
