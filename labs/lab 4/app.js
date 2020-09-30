@@ -19,11 +19,11 @@ function draw(){
     //copy pasted from previous lab to create go back link and title of this lab
     noStroke();
     fill(102, 102, 102);
-    rect(0,0,225,60);
+    rect(0,0,420,60);
     rect(0,60,125,50);
-    triangle(225,0,255,0,225,60 );
+    triangle(420,0,450,0,420,60 );
     triangle(125,60,160,60,125,110 );
     fill(255,255,255);
     textSize(32);
-    text("Templates Lab", 10, 40);
+    text("Board Game Deconstruction", 10, 40);
 }
