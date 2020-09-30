@@ -1,3 +1,19 @@
+// let getSVG = document.getElementsByClassName("svgLine");
+var getSVG = document.getElementsByClassName("svgLine");
+
+document.addEventListener("click", changeColor);
+
+function changeColor(){
+    var randomColor = '#'+Math.floor(Math.random()*16777215).toString(16);
+    //I barrowed this code from https://dev.to/akhil_001/generating-random-color-with-single-line-of-js-code-fhj
+    var i;
+    for (i=0; i<getSVG.length; i++){
+        getSVG[i].style.fill = randomColor;
+    }
+    
+}
+
+
 function setup(){
     let cnv = createCanvas(500, 130);
     cnv.position(0,0);
