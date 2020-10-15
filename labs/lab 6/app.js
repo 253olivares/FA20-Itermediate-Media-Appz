@@ -63,27 +63,28 @@ Vue.component ("book1-view", {
     props: ["book"],
     template:"<div style='width:300px; height:400px; background-color:#66ff66; text-align:center; margin-left:auto; margin-right:auto;'>  <h1 style= 'padding-top:50px;'> {{ book.name }} </h1> <p> {{ book.emoji }} </p> <p> {{ book.author }} </p> </div>"
 })
+//creating sepperate components to be able to hide one and display it on button click.
 Vue.component ("book2-view", {
     props: ["book"],
     template:"<div style='width:300px; height:400px; background-color:#ff6666; text-align:center; margin-left:auto; margin-right:auto;'>  <h1 style= 'padding-top:50px;'> {{ book.name }} </h1> <p> {{ book.emoji }} </p> <p> {{ book.author }} </p> </div>"
 })
-//componenet for book 2
-// Vue.component ("book2-view", {
-//     props: ["book"],
-//     template:"<div><h1></h1></div>"
-// })
 
 
 //data for vue
 let app = new Vue({
+    //calling upon the element
     el:"#app",
     data: {
         see:false,
+        //created two arrays to help display inforamtion of the books ina way that was easy and clean to read
         book1: [{ id: 0, name: "Made In Abyss", emoji: "🗿", author: "Akihito Tsukushi"}],
         book2: [{ id: 1, name: "Fire Force", emoji: "🧑‍🚒", author: "Atsushi Ōkubo"}]
     },
+    //fucntions for my code
     methods: {
+        //function that we are calling in our button to change the value of our see
         showBook: function () {
+            //if statments to help hide and show the book witht he conditions are meet. 
             if (this.see == false){
                 this.see = true;
             } else if (this.see == true){
