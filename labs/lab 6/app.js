@@ -61,12 +61,12 @@ function draw(){
 //get the v -if to work through template and only display on the second book and not the first.)
 Vue.component ("book1-view", {
     props: ["book"],
-    template:"<div style='width:300px; height:400px; background-color:#66ff66; text-align:center; margin-left:auto; margin-right:auto;'>  <h1 style= 'padding-top:50px;'> {{ book.name }} </h1> <p> {{ book.emoji }} </p> <p> {{ book.author }} </p> </div>"
+    template:"<div style='width:300px; height:400px; background-color:#66ff66; text-align:center; margin-left:auto; margin-right:auto;'>  <h1 style= 'padding-top:35px;'> {{ book.name }} </h1> <p style='font-size:70px;'> {{ book.emoji }} </p> <p> {{ book.author }} </p> </div>"
 })
 //creating sepperate components to be able to hide one and display it on button click.
 Vue.component ("book2-view", {
     props: ["book"],
-    template:"<div style='width:300px; height:400px; background-color:#ff6666; text-align:center; margin-left:auto; margin-right:auto;'>  <h1 style= 'padding-top:50px;'> {{ book.name }} </h1> <p> {{ book.emoji }} </p> <p> {{ book.author }} </p> </div>"
+    template:"<div style='width:300px; height:400px; background-color:#ff6666; text-align:center; margin-left:auto; margin-right:auto;'>  <h1 style= 'padding-top:35px;'> {{ book.name }} </h1> <p style='font-size:70px;'> {{ book.emoji }} </p> <p> {{ book.author }} </p> </div>"
 })
 
 
@@ -87,8 +87,10 @@ let app = new Vue({
             //if statments to help hide and show the book witht he conditions are meet. 
             if (this.see == false){
                 this.see = true;
+                document.getElementById("butto").innerHTML="Hide Book 2";
             } else if (this.see == true){
                 this.see = false;
+                document.getElementById("butto").innerHTML="Show Book 2";
             }
         }
     }
