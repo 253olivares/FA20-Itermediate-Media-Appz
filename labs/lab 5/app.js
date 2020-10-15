@@ -55,4 +55,4 @@ function draw(){
     fill(255,255,255);
     textSize(32);
     text("Animation Lab", 10, 40);
-}w
+}

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div style="margin-top: 150px; width: 80%; margin-left:auto; margin-right:auto; display: flex;">
+            <book1-view
+            v-for="book in book1"
+            v-bind:book="book"></book1-view>
+        <book2-view
+            v-if="see"
+            v-for="book in book2"
+            v-bind:book="book"></book2-view>
+        </div>
+        <div style="text-align: center;">
+                <button v-on:click="showBook" style="padding: 10px; margin-top: 50px;">Show Book 2</button>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="app.js"></script>    
+    <script src="../../p5.js"></script>
+</body>
+</html>
