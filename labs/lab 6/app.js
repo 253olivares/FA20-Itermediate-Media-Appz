@@ -16,7 +16,7 @@ function setup(){
     function goBack(){
         window.open('../../index.html', '_self');
     } 
-}
+}   
 
 function draw(){
     //copy pasted from previous lab to create go back link and title of this lab
@@ -39,6 +39,7 @@ function draw(){
 // create book component
 Vue.component("book-view",{
     props: ["book"],
+    //template code to create the books 
     template: `<div style = \"margin-left:auto; margin-right:auto;\" v-if=\"book.display\">
                 <div style=\"width:300px; height:380px;background-color:#ff8c1a;  border-radius: 15px 0px 0px 0px; text-align:center;\">
                     <h1 style= 'padding-top:35px;'>
@@ -78,12 +79,15 @@ let app = new Vue({
     el: "#app",
     data: {
         test:true,
+        //arrays to hold my book inforation
         books: [
-            { id: 0, name: "Made In Abyss", emoji: "🗿", author: "Akihito Tsukushi", display: true, color: "rgb(250, 28, 65)"},
-            { id: 1, name: "Fire Force", emoji: "🧑‍🚒", author: "Atsushi Ōkubo", display: false, color:"rgb(250, 28, 65)" },
+            { id: 0, name: "Made In Abyss", emoji: "🗿", author: "Akihito Tsukushi", display: true},
+            { id: 1, name: "Fire Force", emoji: "🧑‍🚒", author: "Atsushi Ōkubo", display: false},
         ]
     },
+    //methods functions that we are calling 
     methods: {
+        //onclick show book function will cahnge display value in the array to hide and show the second book
         showBook: function() {
             if(this.books[1].display == false){
                 this.books[1].display = true;
