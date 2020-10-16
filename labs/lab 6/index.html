@@ -8,16 +8,12 @@
 <body>
     <div id="app">
         <div style="margin-top: 150px; width: 80%; margin-left:auto; margin-right:auto; display: flex;">
-            <book1-view
-            v-for="book in book1"
-            v-bind:book="book"></book1-view>
-        <book2-view
-            v-if="see"
-            v-for="book in book2"
-            v-bind:book="book"></book2-view>
+            <book-view
+            v-for="book in books"
+            v-bind:book="book"></book-view>
         </div>
         <div style="text-align: center;">
-                <button v-on:click="showBook" style="padding: 10px; margin-top: 50px;" id="butto">Show Book 2</button>
+                <button v-on:click="showBook" style="padding: 10px; margin-top: 70px;" id="butto">Show Book 2</button>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>

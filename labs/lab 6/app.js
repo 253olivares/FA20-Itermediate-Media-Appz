@@ -31,65 +31,65 @@ function draw(){
     text("Intro Vue Lab", 10, 40);
 }
 
-//Orignal attempted scrapped and had to start over becuase I couldnt figure out how to 
-//apply v if to only the second book to make is hide I dont understand how to do it if
+// Orignal attempted scrapped and had to start over becuase I couldnt figure out how to 
+// apply v if to only the second book to make is hide I dont understand how to do it if
 // its being put through an array  
 
 
-// // create book component
-// Vue.component("book-view",{
-//     props: ["book"],
-//     template: "<div style='width:300px; height:400px; background-color:#cc6600; text-align:center; margin-left:auto; margin-right:auto;' v-if='test'>  <h1 style= 'padding-top:50px;'> {{ book.name }} </h1> <p> {{ book.emoji }} </p> <p> {{ book.author }} </p> </div>"
-// });
-
-// //create data for Vue   
-// let app = new Vue({
-//     el: "#app",
-//     data: {
-//         test:true,
-//         books: [
-//             { id: 0, name: "Made In Abyss", emoji: "🗿", author: "Akihito Tsukushi"},
-//             { id: 1, name: "Fire Force", emoji: "🧑‍🚒", author: "Atsushi Ōkubo"},
-//         ]
-//     },
-// })
-
-
-//ATTEMPT 2
-//component for book 1 (I HAVE to keep them seperate I attempted to display them throught one
-//but was unable to due to the button that needs to display the second box I was uable to
-//get the v -if to work through template and only display on the second book and not the first.)
-Vue.component ("book1-view", {
+// create book component
+Vue.component("book-view",{
     props: ["book"],
-    template:"<div style='width:300px; height:400px; background-color:#66ff66; text-align:center; margin-left:auto; margin-right:auto;'>  <h1 style= 'padding-top:35px;'> {{ book.name }} </h1> <p style='font-size:70px;'> {{ book.emoji }} </p> <p> {{ book.author }} </p> </div>"
-})
-//creating sepperate components to be able to hide one and display it on button click.
-Vue.component ("book2-view", {
-    props: ["book"],
-    template:"<div style='width:300px; height:400px; background-color:#ff6666; text-align:center; margin-left:auto; margin-right:auto;'>  <h1 style= 'padding-top:35px;'> {{ book.name }} </h1> <p style='font-size:70px;'> {{ book.emoji }} </p> <p> {{ book.author }} </p> </div>"
-})
+    template: `<div style = \"margin-left:auto; margin-right:auto;\" v-if=\"book.display\">
+                <div style=\"width:300px; height:380px;background-color:#ff8c1a;  border-radius: 15px 0px 0px 0px; text-align:center;\">
+                    <h1 style= 'padding-top:35px;'>
+                        {{ book.name }} 
+                    </h1>
+                    <p style='font-size:70px;'> 
+                        {{ book.emoji }} 
+                    </p> 
+                    <p> 
+                        {{ book.author }} 
+                    </p> 
+                </div> 
+                <div style='position:absolute;height:30px; width:300px;background-color:#ff8c1a;'></div>
+                <div style='position:absolute;width:300px; background-color:#cc6600; height:45px; display:block; border-radius: 15px 0px 0px 15px;'>
+                    <div style='width:270px; margin-left:20px;background-color:#f2f2f2; height:30px; display:block;'>
+                        <div style='width:50px;height:10px; display:block;'>
+                        </div>
+                        <div style='width:100px;height:2px; background-color: #cccccc; display:block;'>
+                        </div>
+                        <div style='width:50px;height:5px; display:block;'>
+                        </div>
+                        <div style=' float:right; width:10px; height:2px; background-color: #cccccc; display:block;'>
+                        </div>
+                        <div style='width:50px;height:5px; display:block;'>
+                        </div>
+                        <div style='width:20px;height:2px; background-color: #cccccc; display:block;'>
+                        </div>
+                        <div style=' margin-left:125px; width:75px; height:2px; background-color: #cccccc; display:block;'>
+                        </div>
+                    </div>
+                </div>
+               </div>`
+});
 
-
-//data for vue
+//create data for Vue   
 let app = new Vue({
-    //calling upon the element
-    el:"#app",
+    el: "#app",
     data: {
-        see:false,
-        //created two arrays to help display inforamtion of the books ina way that was easy and clean to read
-        book1: [{ id: 0, name: "Made In Abyss", emoji: "🗿", author: "Akihito Tsukushi"}],
-        book2: [{ id: 1, name: "Fire Force", emoji: "🧑‍🚒", author: "Atsushi Ōkubo"}]
+        test:true,
+        books: [
+            { id: 0, name: "Made In Abyss", emoji: "🗿", author: "Akihito Tsukushi", display: true, color: "rgb(250, 28, 65)"},
+            { id: 1, name: "Fire Force", emoji: "🧑‍🚒", author: "Atsushi Ōkubo", display: false, color:"rgb(250, 28, 65)" },
+        ]
     },
-    //fucntions for my code
     methods: {
-        //function that we are calling in our button to change the value of our see
-        showBook: function () {
-            //if statments to help hide and show the book witht he conditions are meet. 
-            if (this.see == false){
-                this.see = true;
+        showBook: function() {
+            if(this.books[1].display == false){
+                this.books[1].display = true;
                 document.getElementById("butto").innerHTML="Hide Book 2";
-            } else if (this.see == true){
-                this.see = false;
+            } else if (this.books[1].display == true){
+                this.books[1].display = false;
                 document.getElementById("butto").innerHTML="Show Book 2";
             }
         }
