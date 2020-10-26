@@ -129,26 +129,31 @@ class gameBoard {
             }
         }
     }
-
+    //method that animates the board  by adding a event listers that animates mouse hovers and click to give feedback to user
     animateBoard(){
+        //loops through and addes event listener to all the squares
         for (var i = 0; i < this.spaces.length; i++) {
+            //even listener to fill square on hover making it give response when putting the mouse over
             this.spaces[i].addEventListener('mouseover', function(event){
                 if (event.target.getAttribute("selected") == 0){
                     TweenMax.to(event.target,{duration: 0, css:{fill:'#cccccc'}});
                     console.log("test");
                 }
             }, false);
+            //even listener to fill square back to orginal color when u remove the mouse
             this.spaces[i].addEventListener('mouseout', function(event){
                 if (event.target.getAttribute("selected") == 0){
                     TweenMax.to(event.target,{duration: 0, css:{fill:'white'}});
                 }
             }, false);
+            //even listener to fill square back to orginal color when u remove the mouse
             this.spaces[i].addEventListener('mousedown', function(event){
                 if (event.target.getAttribute("selected") == 0){
                     TweenMax.to(event.target,{duration: 0, css:{fill:'#333333'}});
                     game.round(event);
                 }
             }, false);
+            //event listerner that fills square when I lift my mouse so it doesnt stay that dark
             this.spaces[i].addEventListener('mouseup', function(event){
                 if (event.target.getAttribute("selected") == 0){
                     TweenMax.to(event.target,{duration: 0, css:{fill:'#cccccc'}});
@@ -157,12 +162,14 @@ class gameBoard {
         }   
     }
 }
-
+//player class that will house our player information
 class player  {
+    //grabs player info that we throw into it
     constructor($n, $p){
         this.name  = $n;
         this.piece = $p;
     }
+    //win method that we call when a player meets win condition
     win(){
         document.getElementById("P2").style.width = "275px";
         document.getElementById("P1").style.width = "275px";
@@ -174,6 +181,7 @@ class player  {
     }
 }
 
+//class extension that records which player is x and which player is O
 class x extends player {
     constructor($n){
         super($n, "X");
@@ -186,10 +194,16 @@ class o extends player {
     }
 }
 
+//creats our board 
 let game = new gameBoard;
+//create playewr var
 var player1;
 var player2;
+
+
+//this is our function that will begin game 
 function begin(){
+    //this checks to make sure our values are filled in the input and throws player name into the class if value length is not 0 after trim (We trim to make sure and check players are not just putting spaces)
     if (document.getElementById("firstName").value.trim().length == 0 && document.getElementById("secondName").value.trim().length == 0){
         player1 = new x("Player 1");
         player2 = new o("Player 2");
@@ -203,10 +217,12 @@ function begin(){
         player1 = new x(document.getElementById("firstName").value);
         player2 = new o(document.getElementById("secondName").value);
     }
+    //plays our methods described above
     game.startGame();
     game.animateBoard();
     game.loadPlayers(player1, player2);
 }
+//function to call our player win method. 
 function player1Win(){
     player1.win();
 }

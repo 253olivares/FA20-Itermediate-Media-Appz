@@ -26,7 +26,7 @@ for (var i = 0; i < test.length; i++) {
         TweenMax.to(event.target,{duration: 3, alpha:0 , scale:.5 });
     }, false);
 }
-
+//setup
 function setup(){
     let cnv = createCanvas(500, 130);
     cnv.position(0,0);
