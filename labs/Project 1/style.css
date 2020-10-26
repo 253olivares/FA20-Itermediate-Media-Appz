@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 /*code used to disable scroll bar in all browsers*/
 @-moz-document url-prefix() { /* Disable scrollbar Firefox */
@@ -23,7 +24,7 @@ body::-webkit-scrollbar {
     width: 100%;
     display: block;
     text-align: center;
-    font-size: 50px;
+    font-size: 40px;
 }
 /* css for the game div to have a set width of the entire view box */
 #game{
@@ -114,5 +115,23 @@ hr{
 #secondName{
     float: right;
 }
-
+#players{
+    margin-top: 100px;
+    float: left;
+}
+#P1{
+    width: 275px;
+    padding: 15px;
+    background-color: #ff3333;
+    transition: all .5s ease-in-out;
+}
+#P2{
+    width: 275px;
+    padding: 15px;
+    background-color: lightblue;
+    transition: all .5s ease-in-out;
+}
+#players h2{
+    font-size: 30px;
+}
 

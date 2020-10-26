@@ -6,6 +6,7 @@ Travis Fass class
 /* tween max animation code that is used at the start to create load in animation*/
 TweenMax.from("#header",{duration: 4, alpha:0});
 TweenMax.from("#game",{duration: 4, alpha:0, y:400});
+TweenMax.to("#players",{duration: 0, alpha:0});
 /* P5 code used to display name of page in top left and create a link that taks back to the main page*/
 function setup(){
     let cnv = createCanvas(500, 130);
@@ -39,6 +40,7 @@ function draw(){
 
 class gameBoard {
     constructor(){
+        this.spaces = document.getElementsByClassName("space");
     }
     startGame(){
     /* this is animation that is payed when starting the game*/
@@ -47,24 +49,40 @@ class gameBoard {
         this.turn = 1;
     }
     animateBoard(){
-        let test = document.getElementsByClassName("space");
-        
-        for (var i = 0; i < test.length; i++) {
-        test[i].addEventListener('mouseover', function(event){
-        TweenMax.to(event.target,{duration: 0, css:{fill:'#cccccc'}});
-        console.log("test");
-        }, false);
-        test[i].addEventListener('mouseout', function(event){
-        TweenMax.to(event.target,{duration: 0, css:{fill:'white'}});
-        }, false);
-    
-        test[i].addEventListener('mousedown', function(event){
-        TweenMax.to(event.target,{duration: 0, css:{fill:'#333333'}});
-        }, false);
-        test[i].addEventListener('mouseup', function(event){
-        TweenMax.to(event.target,{duration: 0, css:{fill:'#cccccc'}});
-        }, false);
+        for (var i = 0; i < this.spaces.length; i++) {
+            this.spaces[i].addEventListener('mouseover', function(event){
+                if (event.target.getAttribute("selected") == 0){
+                    TweenMax.to(event.target,{duration: 0, css:{fill:'#cccccc'}});
+                    console.log("test");
+                }
+            }, false);
+            this.spaces[i].addEventListener('mouseout', function(event){
+                if (event.target.getAttribute("selected") == 0){
+                    TweenMax.to(event.target,{duration: 0, css:{fill:'white'}});
+                }
+            }, false);
+            this.spaces[i].addEventListener('mousedown', function(event){
+                if (event.target.getAttribute("selected") == 0){
+                    TweenMax.to(event.target,{duration: 0, css:{fill:'#333333'}});
+                }
+            }, false);
+            this.spaces[i].addEventListener('mouseup', function(event){
+                if (event.target.getAttribute("selected") == 0){
+                    TweenMax.to(event.target,{duration: 0, css:{fill:'#cccccc'}});
+                }
+            }, false);
         }   
+    }
+    loadPlayers(x, o){
+        TweenMax.to("#players",{duration: 1, alpha:1});
+        document.getElementById("P1Name").innerHTML = x.name;
+        document.getElementById("P2Name").innerHTML = o.name;
+    }
+    turn(){
+        
+    }
+    checkWin(){
+        
     }
     reset(){
         this.turn = 1;
@@ -75,9 +93,10 @@ class player {
     constructor($n, $p){
         this.name  = $n;
         this.piece = $p;
+        this.score = 0;
     }
-    score(){
-
+    win(){
+        this.score++;
     }
 }
 
@@ -102,7 +121,7 @@ function begin(){
         var player1 = new x(document.getElementById("firstName").value);
         var player2 = new o(document.getElementById("secondName").value);
     }
-    
     game.startGame();
     game.animateBoard();
+    game.loadPlayers(player1, player2);
 }
