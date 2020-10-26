@@ -19,13 +19,13 @@
                     <p style="margin-left: 205px; position: absolute; font-size: 70px;">X</p>
                     <h2 id="P1Name">Player 1</h2>
                     <br>
-                    <p style="font-size: 20px;">Score: <span id="P1Score">0</span></p>
+                    <br>
                 </div>
                 <div id="P2">
                     <p style="margin-left: 200px; position: absolute; font-size: 70px;">O</p>
                     <h2 id="P2Name">Player 2</h2>
                     <br>
-                    <p style="font-size: 20px;">Score: <span id="P2Score">0</span></p>
+                    <br>
                 </div>
                 <div id="turn">
                     <h2>Turn</h2>
@@ -58,6 +58,12 @@
                     <input type="text" id="secondName" class="pName" name="nameField" placeholder="Your name..">
                     <button id="startBtn" onclick="begin()">
                         Start
+                    </button>
+                </div>
+                <div id="winner">
+                    <h1 id="result">Congratulations <span id="winnerName">player</span> has won!</h1>
+                    <button id="restartBtn" onClick="window.location.reload();">
+                        Restart
                     </button>
                 </div>
             </div>

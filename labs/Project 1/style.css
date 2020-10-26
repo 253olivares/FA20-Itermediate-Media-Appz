@@ -45,6 +45,18 @@ body::-webkit-scrollbar {
     height: 770px;
     transition: all .5s ease-in-out;
 }
+#game #winner{
+    position:absolute;
+    width: 770px;
+    height: 770px;
+    display: none;
+    opacity: 0;
+}
+#winner h1 {
+    margin-top: 300px;
+    font-size: 40px;
+    text-align: center;
+}
 /* styl;ing for the game*/
 #game #svgStyle{
     position:absolute;
@@ -79,6 +91,26 @@ body::-webkit-scrollbar {
     height: 60px;
     width: 280px;
     transition: all .5s ease-in-out;
+  }
+#restartBtn{
+    background-color: #b3b3b3;
+    border: none;
+    outline: none;
+    border-radius: 19px;
+    font-size: 30px;
+    display: block;
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 60px;
+    width: 280px;
+    transition: all .5s ease-in-out;
+}
+#restartBtn:hover{
+    transform: scale(1.25);
+    background-color: #80d4ff;
+    color: white;
+    cursor: pointer;
   }
 /* hover code for the button to change color and size*/
 #startBtn:hover{
@@ -146,7 +178,7 @@ body::-webkit-scrollbar {
 #P2{
     width: 275px;
     padding: 15px;
-    background-color: lightblue;
+    background-color:  #66ccff;
     transition: all .5s ease-in-out;
 }
 #players h2{

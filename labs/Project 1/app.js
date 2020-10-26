@@ -49,6 +49,66 @@ class gameBoard {
         TweenMax.to("#svgStyle", {duration: .5, css: { opacity: 1, filter:"none" }});
         document.getElementById("turnNumb").innerHTML = this.turn;
     }
+    loadPlayers(x, o){
+        TweenMax.to("#players",{duration: 1, alpha:1});
+        document.getElementById("P1Name").innerHTML = x.name;
+        document.getElementById("P2Name").innerHTML = o.name;
+        document.getElementById("P1").style.width = "300px";
+    }
+    round(event){
+        if (this.turn % 2 === 0){
+            document.getElementById("P2").style.width = "275px";
+            event.target.setAttribute("selected", "O");
+            console.log(event.target.getAttribute("selected"));
+            TweenMax.to(event.target,{duration: 0, css:{fill:'#66ccff'}});
+            document.getElementById("P1").style.width = "300px";
+        } else{
+            document.getElementById("P1").style.width = "275px";
+            event.target.setAttribute("selected", "X");
+            console.log(event.target.getAttribute("selected"));
+            TweenMax.to(event.target,{duration: 0, css:{fill:'#ff3333'}});
+            document.getElementById("P2").style.width = "300px";
+        }
+        this.turn++;
+        document.getElementById("turnNumb").innerHTML = this.turn;
+        game.checkWin();
+    }
+    checkWin(){
+        if (this.turn == 10){
+            document.getElementById("P2").style.width = "275px";
+            document.getElementById("result").innerHTML ="Game is a tie no one has won!";
+            document.getElementById("svgStyle").style.opacity=".25";
+            document.getElementById("svgStyle").style.filter="blur(5px)";
+            document.getElementById("winner").style.display="block";
+            TweenMax.to("#winner",{duration: 2, alpha:1});
+
+        } else {
+            if (this.spaces[0].getAttribute("selected") == "X" && this.spaces[1].getAttribute("selected") == "X" && this.spaces[2].getAttribute("selected") == "X" || 
+                this.spaces[3].getAttribute("selected") == "X" && this.spaces[4].getAttribute("selected") == "X" && this.spaces[5].getAttribute("selected") == "X" ||
+                this.spaces[6].getAttribute("selected") == "X" && this.spaces[7].getAttribute("selected") == "X" && this.spaces[8].getAttribute("selected") == "X"){
+                    player1Win();
+            } else if (this.spaces[0].getAttribute("selected") == "O" && this.spaces[1].getAttribute("selected") == "O" && this.spaces[2].getAttribute("selected") == "O" || 
+                this.spaces[3].getAttribute("selected") == "O" && this.spaces[4].getAttribute("selected") == "O" && this.spaces[5].getAttribute("selected") == "O" ||
+                this.spaces[6].getAttribute("selected") == "O" && this.spaces[7].getAttribute("selected") == "O" && this.spaces[8].getAttribute("selected") == "O") {
+                    player2Win();
+            } else if (this.spaces[0].getAttribute("selected") == "X" && this.spaces[3].getAttribute("selected") == "X" && this.spaces[6].getAttribute("selected") == "X" ||
+                this.spaces[1].getAttribute("selected") == "X" && this.spaces[4].getAttribute("selected") == "X" && this.spaces[7].getAttribute("selected") == "X" ||
+                this.spaces[2].getAttribute("selected") == "X" && this.spaces[5].getAttribute("selected") == "X" && this.spaces[8].getAttribute("selected") == "X" ){
+                    player1Win();
+            } else if (this.spaces[0].getAttribute("selected") == "O" && this.spaces[3].getAttribute("selected") == "O" && this.spaces[6].getAttribute("selected") == "O" || 
+                this.spaces[1].getAttribute("selected") == "O" && this.spaces[4].getAttribute("selected") == "O" && this.spaces[7].getAttribute("selected") == "O" ||
+                this.spaces[2].getAttribute("selected") == "O" && this.spaces[5].getAttribute("selected") == "O" && this.spaces[8].getAttribute("selected") == "O"){
+                    player2Win();
+            }else if (this.spaces[0].getAttribute("selected") == "X" && this.spaces[4].getAttribute("selected") == "X" && this.spaces[8].getAttribute("selected") == "X" ||
+                this.spaces[6].getAttribute("selected") == "X" && this.spaces[4].getAttribute("selected") == "X" && this.spaces[2].getAttribute("selected") == "X" ){
+                    player1Win();
+            } else if (this.spaces[0].getAttribute("selected") == "O" && this.spaces[4].getAttribute("selected") == "O" && this.spaces[8].getAttribute("selected") == "O" ||
+                this.spaces[6].getAttribute("selected") == "O" && this.spaces[4].getAttribute("selected") == "O" && this.spaces[2].getAttribute("selected") == "O" ){
+                    player2Win();
+            }
+        }
+    }
+    
     animateBoard(){
         for (var i = 0; i < this.spaces.length; i++) {
             this.spaces[i].addEventListener('mouseover', function(event){
@@ -65,6 +125,7 @@ class gameBoard {
             this.spaces[i].addEventListener('mousedown', function(event){
                 if (event.target.getAttribute("selected") == 0){
                     TweenMax.to(event.target,{duration: 0, css:{fill:'#333333'}});
+                    game.round(event);
                 }
             }, false);
             this.spaces[i].addEventListener('mouseup', function(event){
@@ -74,30 +135,21 @@ class gameBoard {
             }, false);
         }   
     }
-    loadPlayers(x, o){
-        TweenMax.to("#players",{duration: 1, alpha:1});
-        document.getElementById("P1Name").innerHTML = x.name;
-        document.getElementById("P2Name").innerHTML = o.name;
-    }
-    round(){
-        
-    }
-    checkWin(){
-
-    }
-    reset(){
-        this.turn = 1;
-    }
 }
 
-class player {
+class player  {
     constructor($n, $p){
         this.name  = $n;
         this.piece = $p;
-        this.score = 0;
     }
     win(){
-        this.score++;
+        document.getElementById("P2").style.width = "275px";
+        document.getElementById("P1").style.width = "275px";
+        document.getElementById("svgStyle").style.opacity=".25";
+        document.getElementById("svgStyle").style.filter="blur(5px)";
+        document.getElementById("winnerName").innerHTML = this.name;
+        document.getElementById("winner").style.display="block";
+        TweenMax.to("#winner",{duration: 2, alpha:1});
     }
 }
 
@@ -112,18 +164,31 @@ class o extends player {
         super($n, "O");
     }
 }
-let game = new gameBoard;
 
+let game = new gameBoard;
+var player1;
+var player2;
 function begin(){
-    if (document.getElementById("firstName").value.trim().length == 0 || document.getElementById("secondName").value.trim().length == 0){
-        var player1 = new x("Player 1");
-        var player2 = new o("Player 2");
+    if (document.getElementById("firstName").value.trim().length == 0 && document.getElementById("secondName").value.trim().length == 0){
+        player1 = new x("Player 1");
+        player2 = new o("Player 2");
+    } else if (document.getElementById("firstName").value.trim().length == 0 && !document.getElementById("secondName").value.trim().length == 0){
+        player1 = new x("Player 1");
+        player2 = new o(document.getElementById("secondName").value);
+    } else if (!document.getElementById("firstName").value.trim().length == 0 && document.getElementById("secondName").value.trim().length == 0){
+        player1 = new x(document.getElementById("firstName").value);
+        player2 = new o("Player 2");
     } else{
-        var player1 = new x(document.getElementById("firstName").value);
-        var player2 = new o(document.getElementById("secondName").value);
+        player1 = new x(document.getElementById("firstName").value);
+        player2 = new o(document.getElementById("secondName").value);
     }
     game.startGame();
     game.animateBoard();
     game.loadPlayers(player1, player2);
-    game.round();
+}
+function player1Win(){
+    player1.win();
+}
+function player2Win(){
+    player2.win();
 }
