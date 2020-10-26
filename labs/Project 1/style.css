@@ -58,7 +58,7 @@ body::-webkit-scrollbar {
     transition: all .25s ease-in-out;
 }
 /* hr is the underline under the game name*/
-hr{
+#header hr{
     width: 650px;
     margin: auto;
     border: 0;
@@ -118,6 +118,24 @@ hr{
 #players{
     margin-top: 100px;
     float: left;
+}
+#turn{
+    margin-top: 10px;
+}
+#turn h2{
+    text-align: center;
+    font-size: 30px;
+}
+#turn h1{
+    text-align: center;
+    font-size: 100px;
+}
+#turn hr{
+    width: 250px;
+    margin: auto;
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
 }
 #P1{
     width: 275px;

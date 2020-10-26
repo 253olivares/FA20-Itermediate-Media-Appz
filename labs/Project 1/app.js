@@ -41,12 +41,13 @@ function draw(){
 class gameBoard {
     constructor(){
         this.spaces = document.getElementsByClassName("space");
+        this.turn = 1;
     }
     startGame(){
     /* this is animation that is payed when starting the game*/
         TweenMax.to("#GameDisplay", {duration: .5, css:{ display: 'none'}});
         TweenMax.to("#svgStyle", {duration: .5, css: { opacity: 1, filter:"none" }});
-        this.turn = 1;
+        document.getElementById("turnNumb").innerHTML = this.turn;
     }
     animateBoard(){
         for (var i = 0; i < this.spaces.length; i++) {
@@ -78,11 +79,11 @@ class gameBoard {
         document.getElementById("P1Name").innerHTML = x.name;
         document.getElementById("P2Name").innerHTML = o.name;
     }
-    turn(){
+    round(){
         
     }
     checkWin(){
-        
+
     }
     reset(){
         this.turn = 1;
@@ -124,4 +125,5 @@ function begin(){
     game.startGame();
     game.animateBoard();
     game.loadPlayers(player1, player2);
+    game.round();
 }
