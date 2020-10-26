@@ -42,6 +42,7 @@ body::-webkit-scrollbar {
     position:absolute;
     width: 770px;
     height: 770px;
+    transition: all .5s ease-in-out;
 }
 /* styl;ing for the game*/
 #game #svgStyle{
@@ -107,10 +108,10 @@ hr{
 .pName:focus{
     border-bottom-color: #3399ff;
 }
-.first{
+#firstName{
     float: left;
 }
-.second{
+#secondName{
     float: right;
 }
 

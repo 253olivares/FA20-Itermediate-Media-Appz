@@ -95,6 +95,14 @@ class o extends player {
 let game = new gameBoard;
 
 function begin(){
+    if (document.getElementById("firstName").value.trim().length == 0 || document.getElementById("secondName").value.trim().length == 0){
+        var player1 = new x("Player 1");
+        var player2 = new o("Player 2");
+    } else{
+        var player1 = new x(document.getElementById("firstName").value);
+        var player2 = new o(document.getElementById("secondName").value);
+    }
+    
     game.startGame();
     game.animateBoard();
 }
