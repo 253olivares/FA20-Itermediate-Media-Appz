@@ -37,44 +37,54 @@ function draw(){
     textSize(32);
     text("Board Game Project", 10, 40);
 }
-
+//class for the game board that will grab and store all the boxes in a array from 0 - 8
 class gameBoard {
     constructor(){
+        //stores data for our object class this data being turn and spaces
         this.spaces = document.getElementsByClassName("space");
         this.turn = 1;
     }
+    //method to begin the game by loading in names
     startGame(){
     /* this is animation that is payed when starting the game*/
         TweenMax.to("#GameDisplay", {duration: .5, css:{ display: 'none'}});
         TweenMax.to("#svgStyle", {duration: .5, css: { opacity: 1, filter:"none" }});
         document.getElementById("turnNumb").innerHTML = this.turn;
     }
+    //load players method that fills in name in the players area
     loadPlayers(x, o){
         TweenMax.to("#players",{duration: 1, alpha:1});
         document.getElementById("P1Name").innerHTML = x.name;
         document.getElementById("P2Name").innerHTML = o.name;
         document.getElementById("P1").style.width = "300px";
     }
+    //round method that will create animations for the board showing whose turn it is and filling in squares
     round(event){
+        // this checks for which player turn it is based on turn number
         if (this.turn % 2 === 0){
+            // player 2 turn
             document.getElementById("P2").style.width = "275px";
             event.target.setAttribute("selected", "O");
             console.log(event.target.getAttribute("selected"));
             TweenMax.to(event.target,{duration: 0, css:{fill:'#66ccff'}});
             document.getElementById("P1").style.width = "300px";
         } else{
+            //player 1 turn
             document.getElementById("P1").style.width = "275px";
             event.target.setAttribute("selected", "X");
             console.log(event.target.getAttribute("selected"));
             TweenMax.to(event.target,{duration: 0, css:{fill:'#ff3333'}});
             document.getElementById("P2").style.width = "300px";
         }
+        //this loops by adding a turn and updating the turn counter and runs method to check win
         this.turn++;
         document.getElementById("turnNumb").innerHTML = this.turn;
         game.checkWin();
     }
+    // check win method that looks through our array and looks for win conditions for X and O by searching stored attribute
     checkWin(){
         if (this.turn == 10){
+            //this ends game once players reach 10 turns meaning they can go anymore and have to restart saying it is a tie
             document.getElementById("P2").style.width = "275px";
             document.getElementById("result").innerHTML ="Game is a tie no one has won!";
             document.getElementById("svgStyle").style.opacity=".25";
@@ -83,32 +93,43 @@ class gameBoard {
             TweenMax.to("#winner",{duration: 2, alpha:1});
 
         } else {
+            //checks for 3 accross for X
             if (this.spaces[0].getAttribute("selected") == "X" && this.spaces[1].getAttribute("selected") == "X" && this.spaces[2].getAttribute("selected") == "X" || 
                 this.spaces[3].getAttribute("selected") == "X" && this.spaces[4].getAttribute("selected") == "X" && this.spaces[5].getAttribute("selected") == "X" ||
                 this.spaces[6].getAttribute("selected") == "X" && this.spaces[7].getAttribute("selected") == "X" && this.spaces[8].getAttribute("selected") == "X"){
                     player1Win();
-            } else if (this.spaces[0].getAttribute("selected") == "O" && this.spaces[1].getAttribute("selected") == "O" && this.spaces[2].getAttribute("selected") == "O" || 
+            }
+            //checks for 3 accross for O 
+            else if (this.spaces[0].getAttribute("selected") == "O" && this.spaces[1].getAttribute("selected") == "O" && this.spaces[2].getAttribute("selected") == "O" || 
                 this.spaces[3].getAttribute("selected") == "O" && this.spaces[4].getAttribute("selected") == "O" && this.spaces[5].getAttribute("selected") == "O" ||
                 this.spaces[6].getAttribute("selected") == "O" && this.spaces[7].getAttribute("selected") == "O" && this.spaces[8].getAttribute("selected") == "O") {
                     player2Win();
-            } else if (this.spaces[0].getAttribute("selected") == "X" && this.spaces[3].getAttribute("selected") == "X" && this.spaces[6].getAttribute("selected") == "X" ||
+            }
+            //checks for 3 match up and down for X
+            else if (this.spaces[0].getAttribute("selected") == "X" && this.spaces[3].getAttribute("selected") == "X" && this.spaces[6].getAttribute("selected") == "X" ||
                 this.spaces[1].getAttribute("selected") == "X" && this.spaces[4].getAttribute("selected") == "X" && this.spaces[7].getAttribute("selected") == "X" ||
                 this.spaces[2].getAttribute("selected") == "X" && this.spaces[5].getAttribute("selected") == "X" && this.spaces[8].getAttribute("selected") == "X" ){
                     player1Win();
-            } else if (this.spaces[0].getAttribute("selected") == "O" && this.spaces[3].getAttribute("selected") == "O" && this.spaces[6].getAttribute("selected") == "O" || 
+            }
+            //checks for 3 match up and down for O 
+            else if (this.spaces[0].getAttribute("selected") == "O" && this.spaces[3].getAttribute("selected") == "O" && this.spaces[6].getAttribute("selected") == "O" || 
                 this.spaces[1].getAttribute("selected") == "O" && this.spaces[4].getAttribute("selected") == "O" && this.spaces[7].getAttribute("selected") == "O" ||
                 this.spaces[2].getAttribute("selected") == "O" && this.spaces[5].getAttribute("selected") == "O" && this.spaces[8].getAttribute("selected") == "O"){
                     player2Win();
-            }else if (this.spaces[0].getAttribute("selected") == "X" && this.spaces[4].getAttribute("selected") == "X" && this.spaces[8].getAttribute("selected") == "X" ||
+            }
+            //checks for 3 diagonal for X
+            else if (this.spaces[0].getAttribute("selected") == "X" && this.spaces[4].getAttribute("selected") == "X" && this.spaces[8].getAttribute("selected") == "X" ||
                 this.spaces[6].getAttribute("selected") == "X" && this.spaces[4].getAttribute("selected") == "X" && this.spaces[2].getAttribute("selected") == "X" ){
                     player1Win();
-            } else if (this.spaces[0].getAttribute("selected") == "O" && this.spaces[4].getAttribute("selected") == "O" && this.spaces[8].getAttribute("selected") == "O" ||
+            } 
+            //checks for 3 diagonal for O
+            else if (this.spaces[0].getAttribute("selected") == "O" && this.spaces[4].getAttribute("selected") == "O" && this.spaces[8].getAttribute("selected") == "O" ||
                 this.spaces[6].getAttribute("selected") == "O" && this.spaces[4].getAttribute("selected") == "O" && this.spaces[2].getAttribute("selected") == "O" ){
                     player2Win();
             }
         }
     }
-    
+
     animateBoard(){
         for (var i = 0; i < this.spaces.length; i++) {
             this.spaces[i].addEventListener('mouseover', function(event){
