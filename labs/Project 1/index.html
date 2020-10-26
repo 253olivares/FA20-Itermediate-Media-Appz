@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+</head>
+<body>
+    <div id="container">
+        <div id="header">
+            <h1>TIC TAC TOE</h1>
+            <hr>
+        </div>
+        <div id="game" >
+            <div id="holder">
+                <svg id="svgStyle" width="770" height="770">
+                    <rect class="space 1" selected="0" x="0px" width="250" height="250"></rect>
+                    <rect class="space 2" selected="0" x="260px" width="250" height="250"></rect>
+                    <rect class="space 3" selected="0" x="520px" width="250" height="250"></rect>
+                    <rect class="space 4" selected="0" x="0px" y="260" width="250" height="250"></rect>
+                    <rect class="space 5" selected="0" x="260px" y="260" width="250" height="250"></rect>
+                    <rect class="space 6" selected="0" x="520px" y="260" width="250" height="250"></rect>
+                    <rect class="space 7" selected="0" x="0px" y="520" width="250" height="250"></rect>
+                    <rect class="space 8" selected="0" x="260px" y="520" width="250" height="250"></rect>
+                    <rect class="space 9" selected="0" x="520px" y="520" width="250" height="250"></rect>
+    
+                    <rect x="0px" y="250px" width="770px" height="10px"></rect>
+                    <rect x="0px" y="510px" width="770px" height="10px"></rect>
+    
+                    <rect x="250px" y="0px" width="10px" height="770px"></rect>
+                    <rect x="510px" y="0px" width="10px" height="770px"></rect>
+                </svg>
+                <div id="GameDisplay">
+                    <button id="startBtn" onclick="startGame()">
+                        Start
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="app.js"></script>    
+    <script src="../../p5.js"></script>
+</body>
+</html>
