@@ -3,9 +3,9 @@ Tic Tac Toe project 1
 Oct 30
 Travis Fass class
 */
-
-
-
+/* tween max animation code that is used at the start to create load in animation*/
+TweenMax.from("#header",{duration: 4, alpha:0});
+TweenMax.from("#game",{duration: 4, alpha:0, y:400});
 /* P5 code used to display name of page in top left and create a link that taks back to the main page*/
 function setup(){
     let cnv = createCanvas(500, 130);
@@ -37,30 +37,64 @@ function draw(){
     text("Board Game Project", 10, 40);
 }
 
-let test = document.getElementsByClassName("space");
-
-for (var i = 0; i < test.length; i++) {
-    test[i].addEventListener('mouseover', function(event){
+class gameBoard {
+    constructor(){
+    }
+    startGame(){
+    /* this is animation that is payed when starting the game*/
+        TweenMax.to("#GameDisplay", {duration: .5, css:{ display: 'none'}});
+        TweenMax.to("#svgStyle", {duration: .5, css: { opacity: 1, filter:"none" }});
+        this.turn = 1;
+    }
+    animateBoard(){
+        let test = document.getElementsByClassName("space");
+        
+        for (var i = 0; i < test.length; i++) {
+        test[i].addEventListener('mouseover', function(event){
         TweenMax.to(event.target,{duration: 0, css:{fill:'#cccccc'}});
         console.log("test");
-    }, false);
-    test[i].addEventListener('mouseout', function(event){
+        }, false);
+        test[i].addEventListener('mouseout', function(event){
         TweenMax.to(event.target,{duration: 0, css:{fill:'white'}});
-    }, false);
+        }, false);
     
-    test[i].addEventListener('mousedown', function(event){
+        test[i].addEventListener('mousedown', function(event){
         TweenMax.to(event.target,{duration: 0, css:{fill:'#333333'}});
-    }, false);
-    test[i].addEventListener('mouseup', function(event){
+        }, false);
+        test[i].addEventListener('mouseup', function(event){
         TweenMax.to(event.target,{duration: 0, css:{fill:'#cccccc'}});
-    }, false);
+        }, false);
+        }   
+    }
+    reset(){
+        this.turn = 1;
+    }
 }
 
-/* tween max animation code that is used at the start to create load in animation*/
-TweenMax.from("#header",{duration: 4, alpha:0});
-TweenMax.from("#game",{duration: 4, alpha:0, y:400});
-/* this is animation that is paayed when starting the game*/
-function startGame(){
-    TweenMax.to("#GameDisplay", {duration: .5, css:{ display: 'none'}});
-    TweenMax.to("#svgStyle", {duration: .5, css: { opacity: 1, filter:"none" }});
+class player {
+    constructor($n, $p){
+        this.name  = $n;
+        this.piece = $p;
+    }
+    score(){
+
+    }
+}
+
+class x extends player {
+    constructor($n){
+        super($n, "X");
+    }
+}
+
+class o extends player {
+    constructor($n){
+        super($n, "O");
+    }
+}
+let game = new gameBoard;
+
+function begin(){
+    game.startGame();
+    game.animateBoard();
 }

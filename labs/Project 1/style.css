@@ -17,8 +17,7 @@ body::-webkit-scrollbar {
     width: 0px;
     background: transparent; /* Disable scrollbar Chrome/Safari/Webkit */
 }
-
-
+/* css for header */
 #header{
     height: 150px;
     width: 100%;
@@ -26,9 +25,11 @@ body::-webkit-scrollbar {
     text-align: center;
     font-size: 50px;
 }
+/* css for the game div to have a set width of the entire view box */
 #game{
     width: 100%;
 }
+/* contain the div for game display and svg */
 #holder{
     display: block;
     margin-left: auto;
@@ -36,21 +37,25 @@ body::-webkit-scrollbar {
     width: 770px;
     height: 770px;
 }
+/* this holds the display for the game that shows the start button above the actual game */
 #game #GameDisplay{
     position:absolute;
     width: 770px;
     height: 770px;
 }
+/* styl;ing for the game*/
 #game #svgStyle{
     position:absolute;
     filter: blur(5px);
     opacity: .5 ;
     transition: all 1s ease-in-out;
 }
+/* div blocks for the spaces that are used*/
 .space{
     fill: white;
     transition: all .25s ease-in-out;
 }
+/* hr is the underline under the game name*/
 hr{
     width: 650px;
     margin: auto;
@@ -58,6 +63,7 @@ hr{
     height: 1px;
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
 }
+/* button css that enlarges and changes the button background color on hover*/
 #startBtn{
     background-color: #b3b3b3;
     border: none;
@@ -72,9 +78,40 @@ hr{
     width: 280px;
     transition: all .5s ease-in-out;
   }
+/* hover code for the button to change color and size*/
 #startBtn:hover{
     transform: scale(1.25);
     background-color: #80d4ff;
     color: white;
     cursor: pointer;
   }
+/*css for input boxes*/
+.pName{
+    background-color: transparent;
+    display: block;
+    width:175px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top:275px;
+    padding: 15px;
+    font-size: 20px;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    transition: all .5s ease-in-out;
+}
+.pName:hover{
+    border-bottom-color:  #8c8c8c;
+  
+}
+.pName:focus{
+    border-bottom-color: #3399ff;
+}
+.first{
+    float: left;
+}
+.second{
+    float: right;
+}
+
+

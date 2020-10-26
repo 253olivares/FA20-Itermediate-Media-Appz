@@ -25,15 +25,19 @@
                     <rect class="space 7" selected="0" x="0px" y="520" width="250" height="250"></rect>
                     <rect class="space 8" selected="0" x="260px" y="520" width="250" height="250"></rect>
                     <rect class="space 9" selected="0" x="520px" y="520" width="250" height="250"></rect>
-    
+                    
                     <rect x="0px" y="250px" width="770px" height="10px"></rect>
                     <rect x="0px" y="510px" width="770px" height="10px"></rect>
-    
+                    
                     <rect x="250px" y="0px" width="10px" height="770px"></rect>
                     <rect x="510px" y="0px" width="10px" height="770px"></rect>
                 </svg>
                 <div id="GameDisplay">
-                    <button id="startBtn" onclick="startGame()">
+                    <h2 style="position: absolute; margin-top: 340px; margin-left: 80px;">Player 1</h2>
+                    <input type="text" class="pName first" name="nameField" placeholder="Your name..">
+                    <h2 style="position: absolute; margin-top: 340px; margin-left: 610px;">Player 2</h2>
+                    <input type="text" class="pName second" name="nameField" placeholder="Your name..">
+                    <button id="startBtn" onclick="begin()">
                         Start
                     </button>
                 </div>
