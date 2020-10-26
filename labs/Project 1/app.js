@@ -128,7 +128,7 @@ class gameBoard {
                     player2Win();
             }
         }
-    }
+    }   
     //method that animates the board  by adding a event listers that animates mouse hovers and click to give feedback to user
     animateBoard(){
         //loops through and addes event listener to all the squares
