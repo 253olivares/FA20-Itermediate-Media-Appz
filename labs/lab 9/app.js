@@ -1,3 +1,34 @@
+function setup(){
+    let cnv = createCanvas(500, 130);
+    cnv.position(0,0);
+    let button = createButton('Go Back');
+    button.position(10, 70);
+    button.style('font-size', '25px');
+    button.style('background', 'none');
+    button.style('border','none');
+    button.style('color','white');
+    button.style('cursor','pointer');
+    button.mouseClicked(goBack);
+    //this is just to link back to main page
+    function goBack(){
+        window.open('../../index.html', '_self');
+    } 
+}   
+
+function draw(){
+    //copy pasted from previous lab to create go back link and title of this lab
+    noStroke();
+    fill(102, 102, 102);
+    rect(0,0,210,60);
+    rect(0,60,125,50);
+    triangle(210,0,240,0,210,60 );
+    triangle(125,60,160,60,125,110 );
+    fill(255,255,255);
+    textSize(32);
+    text("Kickball Lab", 10, 40);
+}
+
+
 var canvas =  document.getElementById("renderCanvas");
 var engine = new BABYLON.Engine(canvas, true);
 
@@ -28,7 +59,7 @@ function createScene() {
 
     var scene = new BABYLON.Scene(engine);
     //setup
-    camera = new BABYLON.UniversalCamera("UC", new BABYLON.Vector3(0,0,-30), scene);
+    camera = new BABYLON.UniversalCamera("UC", new BABYLON.Vector3(0,0,-15), scene);
     light = new BABYLON.DirectionalLight("light", new BABYLON.Vector3(0, -.2, .2), scene);
     //physics
     gravityVector = BABYLON.Vector3(0, -9.81, 0);
@@ -41,7 +72,11 @@ function createScene() {
         { mass: 1, restitution: .2}, scene
     );
     ball.tag = "ball";
-
+    mat = new BABYLON.StandardMaterial("base", scene);
+    mat.diffuseTexture = new BABYLON.Texture("texture/ball.jpg", scene);
+    ball.material = mat;
+    mat.diffuseTexture.vScale = 1.5;
+    mat.diffuseTexture.uScale = 1.5;
     ground = BABYLON.MeshBuilder.CreateGround("ground", {height: 20, width: 20, subdivisions: 4}, scene);
     
     ground.position.y = -3;
@@ -63,7 +98,7 @@ function createScene() {
     particleSystem.maxEmitPower = 3;
     particleSystem.addVelocityGradient(0,2);
 
-    particleSystem.particleTexture = new BABYLON.Texture("texture/Wicke.png", scene)
+    particleSystem.particleTexture = new BABYLON.Texture("texture/stars.png", scene)
 
     return scene;
 }
