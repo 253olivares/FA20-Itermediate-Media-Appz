@@ -41,7 +41,7 @@ function createScene (){
 
     light = new BABYLON.HemisphericLight("HemiLight", new BABYLON.Vector3(1, 1, 0), scene);
     mat = new BABYLON.StandardMaterial("base", scene);
-    mat.diffuseTexture = new BABYLON.Texture("andres/img/Obama.png", scene);
+    mat.diffuseTexture = new BABYLON.Texture("texture/Wicke.png", scene);
 
     mat.diffuseTexture.uOffset = .5;
     mat.diffuseTexture.vScale = -1.0;
